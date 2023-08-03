@@ -80,8 +80,7 @@ class GameScene: SKScene {
         // physics
         playerFire.physicsBody = SKPhysicsBody(rectangleOf: playerFire.size)
         playerFire.physicsBody?.affectedByGravity = false
-        playerFire.physicsBody?.isDynamic = true
-        playerFire.physicsBody?.categoryBitMask = CBitmask.playerShip
+        playerFire.physicsBody?.categoryBitMask = CBitmask.playerFire
         playerFire.physicsBody?.contactTestBitMask = CBitmask.enemyShip
         playerFire.physicsBody?.collisionBitMask = CBitmask.enemyShip
         addChild(playerFire)
