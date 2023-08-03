@@ -13,6 +13,7 @@ class GameScene: SKScene {
     
     let background = SKSpriteNode(imageNamed: "background")
     var player = SKSpriteNode()
+    var playerFire = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         scene?.size = CGSize(width: 750, height: 1335)
@@ -22,6 +23,7 @@ class GameScene: SKScene {
         background.setScale(2)
         addChild(background)
         makePlayer(playerCh: 1)
+        makePlayerFire()
     }
     
     func makePlayer(playerCh: Int){
@@ -44,6 +46,17 @@ class GameScene: SKScene {
         addChild(player)
     }
     
-    
+    func makePlayerFire(){
+        playerFire = .init(imageNamed: "fire")
+        playerFire.position = player.position
+        playerFire.zPosition = 3
+        addChild(playerFire)
+        
+        let moveAction = SKAction.moveTo(y: 1400, duration: 1)
+        let deleteAction = SKAction.removeFromParent()
+        let combine = SKAction.sequence([moveAction, deleteAction])
+
+        playerFire.run(combine)
+    }
     
 }
