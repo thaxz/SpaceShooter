@@ -82,7 +82,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         // if there's a contact between the enemy and the ship
         if contactA.categoryBitMask == CBitmask.playerShip && contactB.categoryBitMask == CBitmask.enemyShip {
-            playerHitEnemy(players: contactA.node as! SKSpriteNode  , enemies: contactB.node as! SKSpriteNode)
+            
+            player.run(SKAction.repeat(SKAction.sequence([SKAction.fadeOut(withDuration: 0.1), SKAction.fadeIn(withDuration: 0.1)]), count: 8))
+            
+            contactB.node?.removeFromParent()
+            
+            if let live1 = childNode(withName: "live1"){
+                live1.removeFromParent()
+            } else if let live2 = childNode(withName: "live2"){
+                live2.removeFromParent()
+            } else if let live3 = childNode(withName: "live3"){
+                live3.removeFromParent()
+                player.removeFromParent()
+                fireTimer.invalidate()
+                enemyTimer.invalidate()
+            }
+            
+           // playerHitEnemy(players: contactA.node as! SKSpriteNode  , enemies: contactB.node as! SKSpriteNode)
       
         }
     }
@@ -192,10 +208,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addLives(lives: Int){
         for i in 1...lives {
             let live = SKSpriteNode(imageNamed: "live")
-            live.setScale(0.5)
+            live.setScale(1)
             live.position = CGPoint(x: CGFloat(i) * live.size.width + 10, y: size.height - live.size.height - 10)
             live.zPosition = 10
-            live.name = "live"
+            live.name = "live\(i)"
             livesArray.append(live)
             addChild(live)
         }
