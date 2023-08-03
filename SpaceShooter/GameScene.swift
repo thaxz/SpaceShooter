@@ -11,11 +11,16 @@ import GameKit
 
 class GameScene: SKScene {
     
+    // MARK: Properties
+    
     let background = SKSpriteNode(imageNamed: "background")
+    
     var player = SKSpriteNode()
     var playerFire = SKSpriteNode()
-    
     var fireTimer = Timer()
+    
+    var enemy = SKSpriteNode()
+    var enemyTimer = Timer()
     
     // MARK: Touches
     
@@ -29,6 +34,7 @@ class GameScene: SKScene {
         makePlayer(playerCh: 1)
         // calling this function every 0.5 seconds
         fireTimer = .scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(makePlayerFire), userInfo: nil, repeats: true)
+        enemyTimer = .scheduledTimer(timeInterval: 1, target: self, selector: #selector(makeEnemy), userInfo: nil, repeats: true)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -71,6 +77,22 @@ class GameScene: SKScene {
         let combine = SKAction.sequence([moveAction, deleteAction])
 
         playerFire.run(combine)
+    }
+    
+    @objc func makeEnemy(){
+        // creating texture and random position
+        let randomNumer = GKRandomDistribution(lowestValue: 50, highestValue: 700)
+        enemy = .init(imageNamed: "alien")
+        enemy.position = CGPoint(x: randomNumer.nextInt(), y: 1400)
+        enemy.zPosition = 5
+        addChild(enemy)
+        
+        // animating moves
+        let moveAction = SKAction.moveTo(y: -100, duration: 2)
+        let deleteAction = SKAction.removeFromParent()
+        let combine = SKAction.sequence([moveAction, deleteAction])
+
+        enemy.run(combine)
     }
     
 }
