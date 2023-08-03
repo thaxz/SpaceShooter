@@ -15,6 +15,8 @@ class GameScene: SKScene {
     var player = SKSpriteNode()
     var playerFire = SKSpriteNode()
     
+    var fireTimer = Timer()
+    
     override func didMove(to view: SKView) {
         scene?.size = CGSize(width: 750, height: 1335)
         
@@ -24,6 +26,7 @@ class GameScene: SKScene {
         addChild(background)
         makePlayer(playerCh: 1)
         makePlayerFire()
+        fireTimer = .scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(makePlayerFire), userInfo: nil, repeats: true)
     }
     
     func makePlayer(playerCh: Int){
@@ -46,7 +49,7 @@ class GameScene: SKScene {
         addChild(player)
     }
     
-    func makePlayerFire(){
+     @objc func makePlayerFire(){
         playerFire = .init(imageNamed: "fire")
         playerFire.position = player.position
         playerFire.zPosition = 3
