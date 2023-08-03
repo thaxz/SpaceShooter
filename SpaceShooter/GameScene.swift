@@ -25,6 +25,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0
     var scoreLabel = SKLabelNode()
     
+    var livesArray = [SKSpriteNode]()
+    
     // MARK: Touches
     
     override func didMove(to view: SKView) {
@@ -47,6 +49,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.zPosition = 10
         scoreLabel.position = CGPoint(x: size.width/2, y: size.height - 200 )
         addChild(scoreLabel)
+        
+        addLives(lives: 3)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -182,6 +186,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateScore(){
         score += 1
         scoreLabel.text = "Score \(score)"
+    }
+    
+    // Adding lives
+    func addLives(lives: Int){
+        for i in 1...lives {
+            let live = SKSpriteNode(imageNamed: "live")
+            live.setScale(0.5)
+            live.position = CGPoint(x: CGFloat(i) * live.size.width + 10, y: size.height - live.size.height - 10)
+            live.zPosition = 10
+            live.name = "live"
+            livesArray.append(live)
+            addChild(live)
+        }
     }
     
 }
