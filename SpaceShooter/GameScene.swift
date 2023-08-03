@@ -63,6 +63,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // if there's a contact between a fire and an enemy
         if contactA.categoryBitMask == CBitmask.playerFire && contactB.categoryBitMask == CBitmask.enemyShip {
             enemy.removeFromParent()
+            playerFire.removeFromParent()
+        }
+        // if there's a contact between the enemy and the ship
+        if contactA.categoryBitMask == CBitmask.playerShip && contactB.categoryBitMask == CBitmask.enemyShip {
+            enemy.removeFromParent()
             player.removeFromParent()
         }
     }
