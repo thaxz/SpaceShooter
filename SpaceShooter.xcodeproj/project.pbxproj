@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E92332702A7BD41E002D4C7C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923326F2A7BD41E002D4C7C /* Enums.swift */; };
+		E93E06912A7C492E00240069 /* ExplosionOne.sks in Resources */ = {isa = PBXBuildFile; fileRef = E93E068F2A7C492E00240069 /* ExplosionOne.sks */; };
+		E93E06922A7C492E00240069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E93E06902A7C492E00240069 /* Assets.xcassets */; };
 		E9E9F8A42A7B12E9009400E9 /* SpaceShooterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9F8A32A7B12E9009400E9 /* SpaceShooterApp.swift */; };
 		E9E9F8A62A7B12E9009400E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9F8A52A7B12E9009400E9 /* ContentView.swift */; };
 		E9E9F8A82A7B12EA009400E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E9F8A72A7B12EA009400E9 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		E923326F2A7BD41E002D4C7C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		E93E068F2A7C492E00240069 /* ExplosionOne.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionOne.sks; sourceTree = "<group>"; };
+		E93E06902A7C492E00240069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9E9F8A02A7B12E9009400E9 /* SpaceShooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E9F8A32A7B12E9009400E9 /* SpaceShooterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShooterApp.swift; sourceTree = "<group>"; };
 		E9E9F8A52A7B12E9009400E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +40,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E93E068E2A7C491800240069 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				E93E068F2A7C492E00240069 /* ExplosionOne.sks */,
+				E93E06902A7C492E00240069 /* Assets.xcassets */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
 		E9E9F8972A7B12E9009400E9 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +68,7 @@
 		E9E9F8A22A7B12E9009400E9 /* SpaceShooter */ = {
 			isa = PBXGroup;
 			children = (
+				E93E068E2A7C491800240069 /* Particles */,
 				E9E9F8A32A7B12E9009400E9 /* SpaceShooterApp.swift */,
 				E9E9F8B12A7B139A009400E9 /* GameScene.swift */,
 				E923326F2A7BD41E002D4C7C /* Enums.swift */,
@@ -133,6 +147,8 @@
 			files = (
 				E9E9F8AB2A7B12EA009400E9 /* Preview Assets.xcassets in Resources */,
 				E9E9F8A82A7B12EA009400E9 /* Assets.xcassets in Resources */,
+				E93E06922A7C492E00240069 /* Assets.xcassets in Resources */,
+				E93E06912A7C492E00240069 /* ExplosionOne.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
