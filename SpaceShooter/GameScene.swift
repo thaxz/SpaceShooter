@@ -73,16 +73,23 @@ class GameScene: SKScene {
         addChild(player)
     }
     
-     @objc func makePlayerFire(){
+    @objc func makePlayerFire(){
         playerFire = .init(imageNamed: "fire")
         playerFire.position = player.position
         playerFire.zPosition = 3
+        // physics
+        playerFire.physicsBody = SKPhysicsBody(rectangleOf: playerFire.size)
+        playerFire.physicsBody?.affectedByGravity = false
+        playerFire.physicsBody?.isDynamic = true
+        playerFire.physicsBody?.categoryBitMask = CBitmask.playerShip
+        playerFire.physicsBody?.contactTestBitMask = CBitmask.enemyShip
+        playerFire.physicsBody?.collisionBitMask = CBitmask.enemyShip
         addChild(playerFire)
         
         let moveAction = SKAction.moveTo(y: 1400, duration: 1)
         let deleteAction = SKAction.removeFromParent()
         let combine = SKAction.sequence([moveAction, deleteAction])
-
+        
         playerFire.run(combine)
     }
     
@@ -92,13 +99,19 @@ class GameScene: SKScene {
         enemy = .init(imageNamed: "alien")
         enemy.position = CGPoint(x: randomNumer.nextInt(), y: 1400)
         enemy.zPosition = 5
+        // physics body
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)
         addChild(enemy)
+        enemy.physicsBody?.affectedByGravity = false
+        enemy.physicsBody?.categoryBitMask = CBitmask.enemyShip
+        enemy.physicsBody?.contactTestBitMask = CBitmask.playerShip | CBitmask.playerFire
+        enemy.physicsBody?.collisionBitMask = CBitmask.playerFire | CBitmask.playerFire
         
         // animating moves
         let moveAction = SKAction.moveTo(y: -100, duration: 2)
         let deleteAction = SKAction.removeFromParent()
         let combine = SKAction.sequence([moveAction, deleteAction])
-
+        
         enemy.run(combine)
     }
     
