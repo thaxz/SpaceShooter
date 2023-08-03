@@ -62,15 +62,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // if there's a contact between a fire and an enemy
         if contactA.categoryBitMask == CBitmask.playerFire && contactB.categoryBitMask == CBitmask.enemyShip {
-            enemy.removeFromParent()
-            playerFire.removeFromParent()
+            fireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! SKSpriteNode)
         }
         // if there's a contact between the enemy and the ship
         if contactA.categoryBitMask == CBitmask.playerShip && contactB.categoryBitMask == CBitmask.enemyShip {
-            enemy.removeFromParent()
-            player.removeFromParent()
+            playerHitEnemy(players: contactA.node as! SKSpriteNode  , enemies: contactB.node as! SKSpriteNode)
+      
         }
     }
+    
+    
+    // MARK: Configues (todo: put on an extention)
     
     func makePlayer(playerCh: Int){
         
@@ -138,6 +140,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let combine = SKAction.sequence([moveAction, deleteAction])
         
         enemy.run(combine)
+    }
+    
+    // when the player hits an enemy
+    func playerHitEnemy(players: SKSpriteNode, enemies: SKSpriteNode){
+        players.removeFromParent()
+        enemies.removeFromParent()
+        fireTimer.invalidate()
+        enemyTimer.invalidate()
+    }
+    
+    // when a fire hits an enemy
+    func fireHitEnemy(fires: SKSpriteNode, enemies: SKSpriteNode){
+        fires.removeFromParent()
+        enemies.removeFromParent()
     }
     
 }
