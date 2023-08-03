@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 import GameKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: Properties
     
@@ -25,14 +25,15 @@ class GameScene: SKScene {
     // MARK: Touches
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
         scene?.size = CGSize(width: 750, height: 1335)
-        
+        // setting bg (todo: move to an separed function)
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         background.zPosition = 1
         background.setScale(2)
         addChild(background)
         makePlayer(playerCh: 1)
-        // calling this function every 0.5 seconds
+        // calling this function every 0.5 seconds (todo: move to other functions)
         fireTimer = .scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(makePlayerFire), userInfo: nil, repeats: true)
         enemyTimer = .scheduledTimer(timeInterval: 1, target: self, selector: #selector(makeEnemy), userInfo: nil, repeats: true)
     }
@@ -43,6 +44,26 @@ class GameScene: SKScene {
             let location = touch.location(in: self)
             // adding this location to the player
             player.position.x = location.x
+        }
+    }
+    
+    // When the contact begins
+    func didBegin(_ contact: SKPhysicsContact) {
+        let contactA: SKPhysicsBody
+        let contactB: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            contactA = contact.bodyA
+            contactB = contact.bodyB
+        } else {
+            contactA = contact.bodyB
+            contactB = contact.bodyA
+        }
+        
+        // if there's a contact between a fire and an enemy
+        if contactA.categoryBitMask == CBitmask.playerFire && contactB.categoryBitMask == CBitmask.enemyShip {
+            enemy.removeFromParent()
+            player.removeFromParent()
         }
     }
     
