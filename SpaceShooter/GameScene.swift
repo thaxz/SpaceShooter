@@ -22,6 +22,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var enemy = SKSpriteNode()
     var enemyTimer = Timer()
     
+    var score = 0
+    var scoreLabel = SKLabelNode()
+    
     // MARK: Touches
     
     override func didMove(to view: SKView) {
@@ -36,6 +39,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // calling this function every 0.5 seconds (todo: move to other functions)
         fireTimer = .scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(makePlayerFire), userInfo: nil, repeats: true)
         enemyTimer = .scheduledTimer(timeInterval: 1, target: self, selector: #selector(makeEnemy), userInfo: nil, repeats: true)
+        // setting score
+        scoreLabel.text = "Score \(score)"
+        scoreLabel.fontName = "HelveticaNeue-Bold"
+        scoreLabel.fontSize = 50
+        scoreLabel.fontColor = .white
+        scoreLabel.zPosition = 10
+        scoreLabel.position = CGPoint(x: size.width/2, y: size.height - 200 )
+        addChild(scoreLabel)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -62,6 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // if there's a contact between a fire and an enemy
         if contactA.categoryBitMask == CBitmask.playerFire && contactB.categoryBitMask == CBitmask.enemyShip {
+            updateScore()
             fireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! SKSpriteNode)
         }
         // if there's a contact between the enemy and the ship
@@ -132,7 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody?.affectedByGravity = false
         enemy.physicsBody?.categoryBitMask = CBitmask.enemyShip
         enemy.physicsBody?.contactTestBitMask = CBitmask.playerShip | CBitmask.playerFire
-        enemy.physicsBody?.collisionBitMask = CBitmask.playerFire | CBitmask.playerFire
+        enemy.physicsBody?.collisionBitMask = CBitmask.playerShip | CBitmask.playerFire
         
         // animating moves
         let moveAction = SKAction.moveTo(y: -100, duration: 2)
@@ -148,6 +160,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemies.removeFromParent()
         fireTimer.invalidate()
         enemyTimer.invalidate()
+        
+        let explo = SKEmitterNode(fileNamed: "ExplosionOne")
+        explo?.position = players.position
+        explo?.zPosition = 5
+        addChild(explo!)
     }
     
     // when a fire hits an enemy
@@ -159,6 +176,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         explo?.position = enemies.position
         explo?.zPosition = 5
         addChild(explo!)
+    }
+    
+    // updating score
+    func updateScore(){
+        score += 1
+        scoreLabel.text = "Score \(score)"
     }
     
 }
