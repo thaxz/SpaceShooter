@@ -17,6 +17,8 @@ class GameScene: SKScene {
     
     var fireTimer = Timer()
     
+    // MARK: Touches
+    
     override func didMove(to view: SKView) {
         scene?.size = CGSize(width: 750, height: 1335)
         
@@ -25,8 +27,17 @@ class GameScene: SKScene {
         background.setScale(2)
         addChild(background)
         makePlayer(playerCh: 1)
-        makePlayerFire()
+        // calling this function every 0.5 seconds
         fireTimer = .scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(makePlayerFire), userInfo: nil, repeats: true)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            // the location of the touch in the view
+            let location = touch.location(in: self)
+            // adding this location to the player
+            player.position.x = location.x
+        }
     }
     
     func makePlayer(playerCh: Int){
