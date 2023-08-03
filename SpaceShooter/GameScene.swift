@@ -63,6 +63,13 @@ class GameScene: SKScene {
         player.position = CGPoint(x: size.width/2, y: 120)
         player.zPosition = 10
         player.setScale(0.5)
+        // physics body
+        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
+        player.physicsBody?.affectedByGravity = false
+        player.physicsBody?.isDynamic = true
+        player.physicsBody?.categoryBitMask = CBitmask.playerShip
+        player.physicsBody?.contactTestBitMask = CBitmask.enemyShip
+        player.physicsBody?.collisionBitMask = CBitmask.enemyShip
         addChild(player)
     }
     
