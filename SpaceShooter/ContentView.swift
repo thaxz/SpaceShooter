@@ -8,17 +8,32 @@
 import SwiftUI
 import SpriteKit
 
-struct ContentView: View {
-    let scene = GameScene()
+struct ContentView: View, GameLogicDelegate {
+    
+    // trying to pass data by delegate
+    @State var totalScore: Int = 0
+    
+    mutating func addPoint() {
+        self.totalScore += 1
+    }
+    
+    var gameScene: GameScene {
+        let scene = GameScene()
+        scene.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        scene.scaleMode = .fill
+        scene.gameLogicDelegate = self
+        
+        return scene
+    }
     var body: some View {
         ZStack {
-            SpriteView(scene: scene)
+            SpriteView(scene: gameScene)
                 .ignoresSafeArea()
             VStack {
                 Text("hii")
                     .font(.headline).fontWeight(.bold)
-                                   .padding().background(Color.white).cornerRadius(10)
-                               .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 4.0))
+                    .padding().background(Color.white).cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 4.0))
                 Spacer()
             }
         }
