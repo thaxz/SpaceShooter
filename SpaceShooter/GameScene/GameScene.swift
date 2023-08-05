@@ -15,7 +15,7 @@ protocol GameLogicDelegate {
     mutating func addPoint() -> Void
 }
 
-class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // delegate
     var gameLogicDelegate: GameLogicDelegate? = nil
@@ -38,40 +38,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
     
     @Published var isGameOver: Bool = false
     
-    // MARK: Touches
-    
-    override func didMove(to view: SKView) {
-        physicsWorld.contactDelegate = self
-        scene?.size = CGSize(width: 750, height: 1335)
-        // setting bg (todo: move to an separed function)
-        background.position = CGPoint(x: size.width/2, y: size.height/2)
-        background.zPosition = 1
-        background.setScale(2)
-        addChild(background)
-        makePlayer(playerCh: 1)
-        // calling this function every 0.5 seconds (todo: move to other functions)
-        fireTimer = .scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(makePlayerFire), userInfo: nil, repeats: true)
-        enemyTimer = .scheduledTimer(timeInterval: 1, target: self, selector: #selector(makeEnemy), userInfo: nil, repeats: true)
-        // setting score
-        scoreLabel.text = "Score \(score)"
-        scoreLabel.fontName = "HelveticaNeue-Bold"
-        scoreLabel.fontSize = 50
-        scoreLabel.fontColor = .white
-        scoreLabel.zPosition = 10
-        scoreLabel.position = CGPoint(x: size.width/2, y: size.height - 200 )
-        //addChild(scoreLabel)
-        
-        addLives(lives: 3)
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            // the location of the touch in the view
-            let location = touch.location(in: self)
-            // adding this location to the player
-            player.position.x = location.x
-        }
-    }
     
     // When the contact begins
     func didBegin(_ contact: SKPhysicsContact) {

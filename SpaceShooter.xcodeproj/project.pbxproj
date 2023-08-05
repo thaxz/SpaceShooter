@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		E92332702A7BD41E002D4C7C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923326F2A7BD41E002D4C7C /* Enums.swift */; };
 		E93E06912A7C492E00240069 /* ExplosionOne.sks in Resources */ = {isa = PBXBuildFile; fileRef = E93E068F2A7C492E00240069 /* ExplosionOne.sks */; };
-		E93E06922A7C492E00240069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E93E06902A7C492E00240069 /* Assets.xcassets */; };
+		E99E29EB2A7EA04200142A22 /* GameScene+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E29EA2A7EA04200142A22 /* GameScene+Touches.swift */; };
+		E99E29ED2A7EA0D400142A22 /* GameScene+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E29EC2A7EA0D400142A22 /* GameScene+UI.swift */; };
 		E9E9F8A42A7B12E9009400E9 /* SpaceShooterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9F8A32A7B12E9009400E9 /* SpaceShooterApp.swift */; };
 		E9E9F8A62A7B12E9009400E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9F8A52A7B12E9009400E9 /* ContentView.swift */; };
 		E9E9F8A82A7B12EA009400E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E9F8A72A7B12EA009400E9 /* Assets.xcassets */; };
@@ -20,7 +21,8 @@
 /* Begin PBXFileReference section */
 		E923326F2A7BD41E002D4C7C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		E93E068F2A7C492E00240069 /* ExplosionOne.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionOne.sks; sourceTree = "<group>"; };
-		E93E06902A7C492E00240069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E99E29EA2A7EA04200142A22 /* GameScene+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Touches.swift"; sourceTree = "<group>"; };
+		E99E29EC2A7EA0D400142A22 /* GameScene+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+UI.swift"; sourceTree = "<group>"; };
 		E9E9F8A02A7B12E9009400E9 /* SpaceShooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E9F8A32A7B12E9009400E9 /* SpaceShooterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShooterApp.swift; sourceTree = "<group>"; };
 		E9E9F8A52A7B12E9009400E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,9 +46,34 @@
 			isa = PBXGroup;
 			children = (
 				E93E068F2A7C492E00240069 /* ExplosionOne.sks */,
-				E93E06902A7C492E00240069 /* Assets.xcassets */,
 			);
 			path = Particles;
+			sourceTree = "<group>";
+		};
+		E99E29E72A7EA00C00142A22 /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				E9E9F8B12A7B139A009400E9 /* GameScene.swift */,
+				E99E29EA2A7EA04200142A22 /* GameScene+Touches.swift */,
+				E99E29EC2A7EA0D400142A22 /* GameScene+UI.swift */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
+		E99E29E82A7EA02900142A22 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9E9F8A52A7B12E9009400E9 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E99E29E92A7EA03000142A22 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E923326F2A7BD41E002D4C7C /* Enums.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E9E9F8972A7B12E9009400E9 = {
@@ -68,11 +95,11 @@
 		E9E9F8A22A7B12E9009400E9 /* SpaceShooter */ = {
 			isa = PBXGroup;
 			children = (
-				E93E068E2A7C491800240069 /* Particles */,
 				E9E9F8A32A7B12E9009400E9 /* SpaceShooterApp.swift */,
-				E9E9F8B12A7B139A009400E9 /* GameScene.swift */,
-				E923326F2A7BD41E002D4C7C /* Enums.swift */,
-				E9E9F8A52A7B12E9009400E9 /* ContentView.swift */,
+				E93E068E2A7C491800240069 /* Particles */,
+				E99E29E72A7EA00C00142A22 /* GameScene */,
+				E99E29E92A7EA03000142A22 /* Utilities */,
+				E99E29E82A7EA02900142A22 /* Views */,
 				E9E9F8A72A7B12EA009400E9 /* Assets.xcassets */,
 				E9E9F8A92A7B12EA009400E9 /* Preview Content */,
 			);
@@ -147,7 +174,6 @@
 			files = (
 				E9E9F8AB2A7B12EA009400E9 /* Preview Assets.xcassets in Resources */,
 				E9E9F8A82A7B12EA009400E9 /* Assets.xcassets in Resources */,
-				E93E06922A7C492E00240069 /* Assets.xcassets in Resources */,
 				E93E06912A7C492E00240069 /* ExplosionOne.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,7 +187,9 @@
 			files = (
 				E9E9F8B22A7B139A009400E9 /* GameScene.swift in Sources */,
 				E9E9F8A62A7B12E9009400E9 /* ContentView.swift in Sources */,
+				E99E29ED2A7EA0D400142A22 /* GameScene+UI.swift in Sources */,
 				E92332702A7BD41E002D4C7C /* Enums.swift in Sources */,
+				E99E29EB2A7EA04200142A22 /* GameScene+Touches.swift in Sources */,
 				E9E9F8A42A7B12E9009400E9 /* SpaceShooterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
