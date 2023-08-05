@@ -12,17 +12,20 @@ struct ContentView: View, GameLogicDelegate {
     
     // trying to pass data by delegate
     @State var totalScore: Int = 0
+    @State var isGameOver: Bool = false
     
     mutating func addPoint() {
         self.totalScore += 1
     }
     
+    mutating func passGameOver() {
+        self.isGameOver.toggle()
+    }
+    
     var gameScene: GameScene {
         let scene = GameScene()
-        scene.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         scene.scaleMode = .fill
         scene.gameLogicDelegate = self
-        
         return scene
     }
     
@@ -35,7 +38,10 @@ struct ContentView: View, GameLogicDelegate {
                     .font(.title).fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding()
-                    
+                if isGameOver {
+                    // ADD GAME OVER VIEW
+                    Circle().fill(.red)
+                }
                 Spacer()
             }
         }

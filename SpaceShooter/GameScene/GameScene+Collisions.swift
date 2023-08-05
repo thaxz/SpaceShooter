@@ -47,7 +47,7 @@ extension GameScene {
                 player.removeFromParent()
                 fireTimer.invalidate()
                 enemyTimer.invalidate()
-                self.isGameOver.toggle()
+                passGameOver()
             }
             
            // playerHitEnemy(players: contactA.node as! SKSpriteNode  , enemies: contactB.node as! SKSpriteNode)

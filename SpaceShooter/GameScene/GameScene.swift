@@ -10,9 +10,12 @@ import SpriteKit
 import GameKit
 
 protocol GameLogicDelegate {
+    
     var totalScore: Int { get }
+    var isGameOver: Bool { get }
     
     mutating func addPoint() -> Void
+    mutating func passGameOver() -> Void
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -136,6 +139,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 // MARK: - Trying to pass data by delegate
 extension GameScene {
+    
+    func passGameOver(){
+        if var gameLogicDelegate = self.gameLogicDelegate {
+            gameLogicDelegate.passGameOver()
+        }
+    }
+    
     func addPoint() {
         if var gameLogicDelegate = self.gameLogicDelegate {
             gameLogicDelegate.addPoint()
