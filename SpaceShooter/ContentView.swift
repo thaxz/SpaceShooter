@@ -11,9 +11,19 @@ import SpriteKit
 struct ContentView: View {
     let scene = GameScene()
     var body: some View {
-        SpriteView(scene: scene)
-            .ignoresSafeArea()
+        ZStack {
+            SpriteView(scene: scene)
+                .ignoresSafeArea()
+            VStack {
+                Text("hii")
+                    .font(.headline).fontWeight(.bold)
+                                   .padding().background(Color.white).cornerRadius(10)
+                               .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 4.0))
+                Spacer()
+            }
+        }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

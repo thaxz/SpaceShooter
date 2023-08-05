@@ -9,7 +9,10 @@ import Foundation
 import SpriteKit
 import GameKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
+    
+    static let shared = GameScene()
+    //private override init(){}
     
     // MARK: Properties
     
@@ -26,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel = SKLabelNode()
     
     var livesArray = [SKSpriteNode]()
+    
+    @Published var isGameOver: Bool = false
     
     // MARK: Touches
     
@@ -96,6 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.removeFromParent()
                 fireTimer.invalidate()
                 enemyTimer.invalidate()
+                self.isGameOver.toggle()
             }
             
            // playerHitEnemy(players: contactA.node as! SKSpriteNode  , enemies: contactB.node as! SKSpriteNode)
