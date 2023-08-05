@@ -59,7 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
         scoreLabel.fontColor = .white
         scoreLabel.zPosition = 10
         scoreLabel.position = CGPoint(x: size.width/2, y: size.height - 200 )
-        addChild(scoreLabel)
+        //addChild(scoreLabel)
         
         addLives(lives: 3)
     }

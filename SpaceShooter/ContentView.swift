@@ -30,10 +30,11 @@ struct ContentView: View, GameLogicDelegate {
             SpriteView(scene: gameScene)
                 .ignoresSafeArea()
             VStack {
-                Text("hii")
-                    .font(.headline).fontWeight(.bold)
-                    .padding().background(Color.white).cornerRadius(10)
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 4.0))
+                Text("Score: \(self.totalScore)")
+                    .font(.title).fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding()
+                    
                 Spacer()
             }
         }
