@@ -88,6 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
         
         // if there's a contact between a fire and an enemy
         if contactA.categoryBitMask == CBitmask.playerFire && contactB.categoryBitMask == CBitmask.enemyShip {
+            addPoint()
             updateScore()
             fireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! SKSpriteNode)
         }
@@ -229,4 +230,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
         }
     }
     
+}
+
+// MARK: - Trying to pass data by delegate
+extension GameScene {
+    private func addPoint() {
+        if var gameLogicDelegate = self.gameLogicDelegate {
+            gameLogicDelegate.addPoint()
+        }
+    }
 }
