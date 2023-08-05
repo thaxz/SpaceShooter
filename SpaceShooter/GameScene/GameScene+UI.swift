@@ -42,7 +42,24 @@ extension GameScene {
         //addChild(scoreLabel)
     }
     
+    // updating score
+    func updateScore(){
+        score += 1
+        scoreLabel.text = "Score \(score)"
+    }
     
+    // Adding lives
+    func addLives(lives: Int){
+        for i in 1...lives {
+            let live = SKSpriteNode(imageNamed: "live")
+            live.setScale(1)
+            live.position = CGPoint(x: CGFloat(i) * live.size.width + 10, y: size.height - live.size.height - 10)
+            live.zPosition = 10
+            live.name = "live\(i)"
+            livesArray.append(live)
+            addChild(live)
+        }
+    }
     
     
 }

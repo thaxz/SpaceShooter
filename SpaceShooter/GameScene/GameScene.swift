@@ -36,57 +36,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var livesArray = [SKSpriteNode]()
     
-    @Published var isGameOver: Bool = false
-    
-    
-    // When the contact begins
-    func didBegin(_ contact: SKPhysicsContact) {
-        let contactA: SKPhysicsBody
-        let contactB: SKPhysicsBody
-        
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            contactA = contact.bodyA
-            contactB = contact.bodyB
-        } else {
-            contactA = contact.bodyB
-            contactB = contact.bodyA
-        }
-        
-        // if there's a contact between a fire and an enemy
-        if contactA.categoryBitMask == CBitmask.playerFire && contactB.categoryBitMask == CBitmask.enemyShip {
-            addPoint()
-            updateScore()
-            fireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! SKSpriteNode)
-        }
-        // if there's a contact between the enemy and the ship
-        if contactA.categoryBitMask == CBitmask.playerShip && contactB.categoryBitMask == CBitmask.enemyShip {
-            
-            player.run(SKAction.repeat(SKAction.sequence([SKAction.fadeOut(withDuration: 0.1), SKAction.fadeIn(withDuration: 0.1)]), count: 8))
-            
-            contactB.node?.removeFromParent()
-            
-            if let live1 = childNode(withName: "live1"){
-                live1.removeFromParent()
-            } else if let live2 = childNode(withName: "live2"){
-                live2.removeFromParent()
-            } else if let live3 = childNode(withName: "live3"){
-                live3.removeFromParent()
-                player.removeFromParent()
-                fireTimer.invalidate()
-                enemyTimer.invalidate()
-                self.isGameOver.toggle()
-            }
-            
-           // playerHitEnemy(players: contactA.node as! SKSpriteNode  , enemies: contactB.node as! SKSpriteNode)
-      
-        }
-    }
-    
+    var isGameOver: Bool = false
     
     // MARK: Configues (todo: put on an extention)
     
     func makePlayer(playerCh: Int){
-        
         var shipName = ""
         
         switch playerCh {
@@ -177,30 +131,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(explo!)
     }
     
-    // updating score
-    func updateScore(){
-        score += 1
-        scoreLabel.text = "Score \(score)"
-    }
-    
-    // Adding lives
-    func addLives(lives: Int){
-        for i in 1...lives {
-            let live = SKSpriteNode(imageNamed: "live")
-            live.setScale(1)
-            live.position = CGPoint(x: CGFloat(i) * live.size.width + 10, y: size.height - live.size.height - 10)
-            live.zPosition = 10
-            live.name = "live\(i)"
-            livesArray.append(live)
-            addChild(live)
-        }
-    }
     
 }
 
 // MARK: - Trying to pass data by delegate
 extension GameScene {
-    private func addPoint() {
+    func addPoint() {
         if var gameLogicDelegate = self.gameLogicDelegate {
             gameLogicDelegate.addPoint()
         }

@@ -25,6 +25,7 @@ struct ContentView: View, GameLogicDelegate {
         
         return scene
     }
+    
     var body: some View {
         ZStack {
             SpriteView(scene: gameScene)
