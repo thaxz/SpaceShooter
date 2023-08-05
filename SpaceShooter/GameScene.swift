@@ -9,6 +9,12 @@ import Foundation
 import SpriteKit
 import GameKit
 
+protocol GameLogicDelegate {
+    var totalScore: Int { get }
+    
+    mutating func addPoint() -> Void
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
     
     static let shared = GameScene()
