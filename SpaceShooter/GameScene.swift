@@ -17,8 +17,8 @@ protocol GameLogicDelegate {
 
 class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
     
-    static let shared = GameScene()
-    //private override init(){}
+    // delegate
+    var gameLogicDelegate: GameLogicDelegate? = nil
     
     // MARK: Properties
     
