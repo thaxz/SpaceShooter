@@ -15,7 +15,7 @@ extension GameScene {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         setupScene()
-        makePlayer(playerCh: 1)
+        makePlayer(playerCh: shipChoice.integer(forKey: "playerChoice"))
         addLives(lives: 3)
     }
     

@@ -22,13 +22,13 @@ struct StartView: View {
                     startButton
                     HStack(spacing: 16){
                         PrimaryButton(action: {
-                            
+                            makePlayerChoice(1)
                         }, name: "Ship 1")
                         PrimaryButton(action: {
-                            
+                            makePlayerChoice(2)
                         }, name: "Ship 2")
                         PrimaryButton(action: {
-                            
+                            makePlayerChoice(3)
                         }, name: "Ship 3")
                     }
                     .padding(.bottom, 50)
@@ -37,6 +37,12 @@ struct StartView: View {
             .ignoresSafeArea()
         }
     }
+    
+    // todo: move to viewmodel
+    func makePlayerChoice(_ choice: Int){
+        shipChoice.set(choice, forKey: "playerChoice")
+    }
+    
 }
 
 // MARK: Components
