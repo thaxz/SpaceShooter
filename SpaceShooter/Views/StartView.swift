@@ -17,13 +17,21 @@ struct StartView: View {
                 Color.black
                 Image("background")
                     .aspectRatio(contentMode: .fill)
-                VStack {
+                VStack(spacing: 20){
                     Spacer()
                     startButton
-                    HStack {
-                        
+                    HStack(spacing: 16){
+                        PrimaryButton(action: {
+                            
+                        }, name: "Ship 1")
+                        PrimaryButton(action: {
+                            
+                        }, name: "Ship 2")
+                        PrimaryButton(action: {
+                            
+                        }, name: "Ship 3")
                     }
-                    Spacer()
+                    .padding(.bottom, 50)
                 }
             }
             .ignoresSafeArea()
@@ -36,10 +44,10 @@ struct StartView: View {
 extension StartView {
     
     var startButton: some View {
-        NavigationLink {ContentView()} label: {
+        NavigationLink {ContentView().navigationBarBackButtonHidden(true).navigationBarBackButtonHidden(true)} label: {
             ZStack{
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color.black.opacity(0.3))
+                    .foregroundColor(Color.blue.opacity(0.3))
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(.white, lineWidth: 2)
