@@ -38,13 +38,11 @@ struct ContentView: View, GameLogicDelegate {
                     .font(.title).fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding()
-                if isGameOver {
-                    // ADD GAME OVER VIEW
-                    Circle().fill(.red)
-                }
                 Spacer()
             }
-            // add gameover sheet
+            .fullScreenCover(isPresented: $isGameOver) {
+                GameOverView()
+            }
         }
     }
     
