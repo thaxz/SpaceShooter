@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E92332702A7BD41E002D4C7C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923326F2A7BD41E002D4C7C /* Enums.swift */; };
 		E93E06912A7C492E00240069 /* ExplosionOne.sks in Resources */ = {isa = PBXBuildFile; fileRef = E93E068F2A7C492E00240069 /* ExplosionOne.sks */; };
+		E96957722A804AE800DFDA0E /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96957712A804AE800DFDA0E /* StartView.swift */; };
 		E99E29EB2A7EA04200142A22 /* GameScene+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E29EA2A7EA04200142A22 /* GameScene+Touches.swift */; };
 		E99E29ED2A7EA0D400142A22 /* GameScene+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E29EC2A7EA0D400142A22 /* GameScene+UI.swift */; };
 		E99E29EF2A7EA1F000142A22 /* GameScene+Collisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E29EE2A7EA1F000142A22 /* GameScene+Collisions.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		E923326F2A7BD41E002D4C7C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		E93E068F2A7C492E00240069 /* ExplosionOne.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionOne.sks; sourceTree = "<group>"; };
+		E96957712A804AE800DFDA0E /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		E99E29EA2A7EA04200142A22 /* GameScene+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Touches.swift"; sourceTree = "<group>"; };
 		E99E29EC2A7EA0D400142A22 /* GameScene+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+UI.swift"; sourceTree = "<group>"; };
 		E99E29EE2A7EA1F000142A22 /* GameScene+Collisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Collisions.swift"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				E9E9F8A52A7B12E9009400E9 /* ContentView.swift */,
+				E96957712A804AE800DFDA0E /* StartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				E9E9F8B22A7B139A009400E9 /* GameScene.swift in Sources */,
 				E9E9F8A62A7B12E9009400E9 /* ContentView.swift in Sources */,
 				E99E29ED2A7EA0D400142A22 /* GameScene+UI.swift in Sources */,
+				E96957722A804AE800DFDA0E /* StartView.swift in Sources */,
 				E92332702A7BD41E002D4C7C /* Enums.swift in Sources */,
 				E99E29EB2A7EA04200142A22 /* GameScene+Touches.swift in Sources */,
 				E99E29EF2A7EA1F000142A22 /* GameScene+Collisions.swift in Sources */,
