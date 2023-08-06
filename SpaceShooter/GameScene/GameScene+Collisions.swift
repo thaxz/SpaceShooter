@@ -44,9 +44,8 @@ extension GameScene {
                 live2.removeFromParent()
             } else if let live3 = childNode(withName: "live3"){
                 live3.removeFromParent()
-                player.removeFromParent()
-                fireTimer.invalidate()
-                enemyTimer.invalidate()
+                gameOver()
+                
                 passGameOver()
             }
             

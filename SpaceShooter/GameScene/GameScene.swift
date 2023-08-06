@@ -134,6 +134,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(explo!)
     }
     
+    func gameOver(){
+        player.removeFromParent()
+        fireTimer.invalidate()
+        enemyTimer.invalidate()
+        removeAllChildren()
+        
+    }
     
 }
 
