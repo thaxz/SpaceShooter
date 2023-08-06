@@ -19,19 +19,9 @@ struct StartView: View {
                     .aspectRatio(contentMode: .fill)
                 VStack {
                     Spacer()
-                    NavigationLink {ContentView()} label: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(Color.black.opacity(0.3))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(.white, lineWidth: 2)
-                                )
-                            Text("Start Game")
-                                .foregroundColor(.white)
-                                .font(.system(size: 20, weight: .bold))
-                        }
-                        .frame(height: 50)
+                    startButton
+                    HStack {
+                        
                     }
                     Spacer()
                 }
@@ -39,6 +29,29 @@ struct StartView: View {
             .ignoresSafeArea()
         }
     }
+}
+
+// MARK: Components
+
+extension StartView {
+    
+    var startButton: some View {
+        NavigationLink {ContentView()} label: {
+            ZStack{
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(Color.black.opacity(0.3))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(.white, lineWidth: 2)
+                    )
+                Text("Start Game")
+                    .foregroundColor(.white)
+                    .font(.system(size: 20, weight: .bold))
+            }
+            .frame(height: 50)
+        }
+    }
+    
 }
 
 struct StartView_Previews: PreviewProvider {
